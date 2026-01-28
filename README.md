@@ -16,9 +16,19 @@ Use the kext with OpenCore or install it to `Library/Extension/` folder and fix 
 
 ## Building the source
 
-* `git clone` the repository
+* `git clone --recursive` the repository (note the submodule)
 * Simply running xcodebuild in the checkout directory should be sufficient to build the kext.
 * If you wish to package it up, you can run `make` to assemble the package in the build/ directory
+
+## Some notes from syeyoung
+I tried building HoRNDIS for my m1 sequoia mac. I got it to build using upstream's version of MacKernelSDK, but there was an error loading it due to mismatching vtables.
+So I just overwrote it with kernel.framework/headers in xcode,
+Added some headers from usr/include
+Re-overwrote some headers from original repo for compatibility (IONetworkInterface.h I believe but I'm not so sure)
+
+I believe the issue was private apis but i'm also not so sure.
+
+Also do note that you need to disable kext signing by `csrutie enable --without kext` in recovery mode (Unless you got kext signing key)
 
 ## Debugging and Development Notes
 
