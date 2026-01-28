@@ -22,9 +22,10 @@ Use the kext with OpenCore or install it to `Library/Extension/` folder and fix 
 
 ## Some notes from syeyoung
 I tried building HoRNDIS for my m1 sequoia mac. I got it to build using upstream's version of MacKernelSDK, but there was an error loading it due to mismatching vtables.
-So I just overwrote it with kernel.framework/headers in xcode,
-Added some headers from usr/include
-Re-overwrote some headers from original repo for compatibility (IONetworkInterface.h I believe but I'm not so sure)
+So I just 
+- overwrote it with kernel.framework/headers in xcode.
+- added some headers from usr/include. (Accesibility*.h and few)
+- Re-overwrote some headers from original repo for compatibility (IONetworkInterface.h I believe but I'm not so sure)
 
 I believe the issue was private apis but i'm also not so sure.
 
